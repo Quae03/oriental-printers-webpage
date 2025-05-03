@@ -13,19 +13,22 @@ header {
     button.back-btn {
         background-color: #fff;
         border: none;
+        border-radius: 20px;
         font-size: 18px;
+        padding: 10px;
         position: absolute;
-        left: 100px;
-        top: 50px;
+        left: 50px;
+        top: 90px;
         transition: all 0.5s ease;
     }
     button.back-btn:hover {
-        color: rgb(40, 159, 175);
+        background-color: rgb(40, 159, 175);
+        color: #fff;
         cursor: pointer;
     }
 }
 img {
-    width: 250px;
+    width: 300px;
 }
 h1 {
     color: rgb(40, 159, 175);
@@ -70,17 +73,25 @@ form {
     textarea {
         border: 1px solid #555;
     }
-    button {
-        background-color: rgb(0, 0, 0);
-        border: 1px solid #000;
-        border-radius: 20px;
-        color: #fff;
-        padding: 10px;
-    }
-    button:hover {
+    button.submit-btn:hover {
         background-color: rgb(40, 159, 175);
         border: 1px solid rgb(40, 159, 175);
         color: #000;
         cursor: pointer;
     }
+}
+
+/* JS REFERENCED CLASSES */
+
+.submit-btn {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #000;
+    border-radius: 20px;
+    color: #fff;
+    padding: 10px;
+}
+.invalid-submit-btn {
+    background-color: #777;
+    border: 1px solid #777;
+    border-radius: 20px;
 }

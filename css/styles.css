@@ -3,6 +3,37 @@
     src: url('/css/fonts/VujahdayScript-Regular.ttf');
 }
 
+/* KEYFRAMES */
+
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 5px 1px rgb(40, 159, 175);
+    }
+    25% {
+        box-shadow: 0px 0px 5px 1px #fff;
+    }
+    75% {
+        box-shadow: 0px 0px 5px 1px #2a045c;
+    }
+    100% {
+        box-shadow: 0px 0px 5px 1px rgb(40, 159, 175);
+    }
+}
+@keyframes glow-btn {
+    0% {
+        box-shadow: 0px 0px 5px 1px rgb(40, 159, 175);
+    }
+    50% {
+        box-shadow: 0px 0px 5px 1px #2a045c;
+    }
+    100% {
+        box-shadow: 0px 0px 5px 1px rgb(40, 159, 175);
+    }
+}
+
+
+/* STYLES */
+
 body {
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -19,7 +50,6 @@ p, div.contact-list div {
     font-size: 1.2em;
 }
 header {
-    /* background-image: url('zuzana-ruttkay-0BK8y1bIxGs-unsplash.jpg'); */
     background-color: #000;
     background-size: cover;
     background-position: center;
@@ -29,13 +59,13 @@ header {
     padding: 20px;
     img.logo {
         border-radius: 50%;
-        box-shadow: 10px 5px 5px -5px #fff;
         width: 40%;
-        padding: 0;
+        padding: 10px;
         padding-bottom: 0;
+        animation: glow 10s ease 0s infinite normal;
     }
     h2.slogan {
-        margin-bottom: 50px;
+        margin: 30px;
     }
 }
 h2.services {
@@ -49,12 +79,14 @@ nav {
     div {
         border: 2px solid white;
         cursor: pointer;
+        font-weight: 600;
         padding: 20px;
         text-align: center;
         width: 100%;
         transition: all 0.5s ease;
     }
     .about-btn:hover, .contact-btn:hover, .email-btn:hover {
+        background-color: rgba(40, 159, 175, 0.021);
         color: rgb(40, 159, 175);
         border-top: 2px solid rgb(40, 159, 175);
         border-bottom: 2px solid rgb(40, 159, 175);
@@ -72,6 +104,9 @@ h2.services {
 section.content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @media (width:750px) {
+        grid-template-columns: 1fr;
+    }
     div {
         display: flex;
         flex-direction: column;
@@ -81,27 +116,43 @@ section.content {
             text-align: center;
         }
         img {
-            background: cover;
             border-radius: 8px;
+            box-shadow: 0px 0px 5px 1px #fff;
             margin: 0 auto;
-            height: 150px;
-            width: 250px;
+            height: 250px;
+            width: 350px;
         }
+    }
+}
+section.adt-services {
+    background-color: #fff;
+    h2 {
+        color: #000;
+        margin: 0;
     }
 }
 section.adt-services,
 section.about {
+    font-weight: 600;
     padding: 20px 50px;
 }
 h2.about-heading {
     color: #000;
 }
-footer {
-    padding: 20px 50px;
-    img {
-        margin: 0 auto;
-        width: 150px;
+section.about {
+    a {
+        color: #2a045c;
+        text-decoration: none;
     }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+section.contact-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
     div.contact-list {
         width: fit-content;
     }
@@ -126,4 +177,47 @@ footer {
         color: black;
         text-decoration: none;
     }
+    .email-btn-bottom {
+        flex-grow: 2;
+        display: flex;
+        justify-content: center;
+    }
+    .email-btn-bottom button{
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px;
+        height: 100px;
+        width: 250px;
+        transition: all 0.5s ease;
+    }
+    .email-btn-bottom button:hover {
+        background-color: #fff;
+        border: rgb(40, 159, 175);
+        color: #000;
+        cursor: pointer;
+        animation: glow-btn 10s ease 0s infinite normal;
+    }
+}
+footer {
+    display: flex;
+    justify-content: center;
+    img {
+        border-radius: 50%;
+        margin: 20px;
+        width: 150px;
+    }
+}
+
+/* OBSERVER CODE */
+
+.hidden {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
 }

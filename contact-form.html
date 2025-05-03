@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oriental Printers Contact Form</title>
+    <title>Contact Form</title>
     <link rel="stylesheet" href="css/contact-form.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="orientalPrintersLogo.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <button id="backBtn" class="back-btn">Back to Home</button>
-        <img class="logo" src="orientalPrintersLogo.png" alt="Oriental Printers Logo">
+        <img class="logo" src="orientalPrintersLogo3.png" alt="Oriental Printers Logo">
     </header>
     <h1>Contact Form</h1>
     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
@@ -20,7 +21,7 @@
         <input id="name" type="text" name="name" placeholder="Your Name" required>
         <input id="email" type="text" name="email" placeholder="Your Email" required>
         <span id="email-error"></span>
-        <textarea id="message" rows="8" name="message" placeholder="Your message" required></textarea>
+        <textarea id="message" rows="8" name="message" placeholder="How can we help you?" required></textarea>
         <button id="submitBtn" class="submit-btn" type="submit">Send</button>
     </form>
 
@@ -65,11 +66,13 @@
                 emailErrorMessage.style.display = 'block';
                 emailErrorMessage.textContent = 'Enter a valid email';
                 emailErrorMessage.style.color = 'red';
-                submitBtn.style.backgroundColor = '#777'
-                submitBtn.style.border = '1px solid #777'
+                submitBtn.classList.remove('submit-btn');
+                submitBtn.classList.add('invalid-submit-btn');
             } else {
                 isValid = true;
                 emailErrorMessage.style.display = 'none';
+                submitBtn.classList.remove('invalid-submit-btn');
+                submitBtn.classList.add('submit-btn');
             }
         };
 

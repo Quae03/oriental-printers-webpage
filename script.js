@@ -121,13 +121,15 @@ document.getElementById('content');
 
 services.map((x)=> {
     let {img, title} = x;
+    let id = 1;
 
     content.innerHTML += `
-        <div>
+        <div id='service${id}' class='hidden'>
             ${img ? `<img src="${img}" alt="${title}" width="150"/>` : ''}
             <h3>${title}</h3>
         </div>
     `;
+    id += 1;
 });
 
 document.getElementById('about-btn').addEventListener('click', ()=> {
@@ -141,3 +143,21 @@ document.getElementById('contact-btn').addEventListener('click', ()=> {
 document.getElementById('emailFormBtn').addEventListener('click', ()=> {
     window.location.href = 'contact-form.html';
 });
+
+document.getElementById('emailFormBtn2').addEventListener('click', ()=> {
+    window.location.href = 'contact-form.html';
+});
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((element)=> observer.observe(element));
