@@ -1,13 +1,18 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/css/fonts/VujahdayScript-Regular.ttf');
+}
+
 body {
+    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 50px;
     margin: 0;
 }
-header, nav, section, footer {
+header, section, footer {
     border-bottom: 1px solid black;
 }
 h2 {
-    color: rgb(40, 159, 175);
+    color: #fff;
     font-size: 30px;
 }
 p, div.contact-list div {
@@ -15,38 +20,56 @@ p, div.contact-list div {
 }
 header {
     /* background-image: url('zuzana-ruttkay-0BK8y1bIxGs-unsplash.jpg'); */
+    background-color: #000;
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    img {
+    padding: 20px;
+    img.logo {
+        border-radius: 50%;
+        box-shadow: 10px 5px 5px -5px #fff;
         width: 40%;
-        padding: 2rem;
+        padding: 0;
+        padding-bottom: 0;
     }
+    h2.slogan {
+        margin-bottom: 50px;
+    }
+}
+h2.services {
+    margin-bottom: 50px;
 }
 nav {
     font-size: 20px;
     display: flex;
-    gap: 20px;
+    justify-content: space-evenly;
+    width: 100%;
     div {
         border: 2px solid white;
-        border-radius: 8px;
         cursor: pointer;
         padding: 20px;
         text-align: center;
-        width: 30%;
+        width: 100%;
         transition: all 0.5s ease;
     }
-    .about-btn:hover, .contact-btn:hover {
+    .about-btn:hover, .contact-btn:hover, .email-btn:hover {
         color: rgb(40, 159, 175);
-        border: 2px solid rgb(40, 159, 175);
+        border-top: 2px solid rgb(40, 159, 175);
+        border-bottom: 2px solid rgb(40, 159, 175);
     }
 }
+main {
+    background: radial-gradient(#fff, rgb(40, 159, 175));
+}
 h2.services {
+    color: black;
+    padding: 40px;
+    margin: 0;
     text-align: center;
 }
-main {
+section.content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     div {
@@ -58,14 +81,29 @@ main {
             text-align: center;
         }
         img {
+            background: cover;
             border-radius: 8px;
             margin: 0 auto;
+            height: 150px;
+            width: 250px;
         }
     }
 }
+section.adt-services,
+section.about {
+    padding: 20px 50px;
+}
+h2.about-heading {
+    color: #000;
+}
 footer {
+    padding: 20px 50px;
     img {
+        margin: 0 auto;
         width: 150px;
+    }
+    div.contact-list {
+        width: fit-content;
     }
     div.contact-list div {
         width: fit-content;

@@ -135,5 +135,9 @@ document.getElementById('about-btn').addEventListener('click', ()=> {
 });
 
 document.getElementById('contact-btn').addEventListener('click', ()=> {
-    document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+    document.getElementById('contact-list').scrollIntoView({behavior: 'smooth'});
+});
+
+document.getElementById('emailFormBtn').addEventListener('click', ()=> {
+    window.location.href = 'contact-form.html';
 });
