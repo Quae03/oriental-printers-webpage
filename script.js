@@ -1,123 +1,139 @@
 const services = [
     {
-        title: 'Graphic designing',
-        img: ''
+        img: 'images/andy-brown-4cOaHsfIBKQ-unsplash.jpg',
+        title: 'Graphic design',
     },
     {
-        title: "Banners",
-        img: ''
+        img: 'images/Certificates.jpeg',
+        title: 'Certificates'
     },
     {
-        title: 'Branding',
-        img: ''
+        img: 'images/banners.jpg',
+        title: 'Banners'
     },
     {
-        title: 'Business cards',
-        img: 'images/Business Cards.jpeg'
+        img: 'images/2h-media-NmSPbe0bDtc-unsplash.jpg',
+        title: 'Branding'
     },
     {
-        title: 'Booklets',
-        img: ''
+        img: 'images/Business Cards.jpeg',
+        title: 'Business cards'
     },
     {
-        title: 'Calendars',
-        img: 'images/Calendars.jpeg'
+        img: 'images/booklets.jpeg',
+        title: 'Booklets'
     },
     {
-        title: 'Cards',
-        img: ''
+        img: 'images/Calendars.jpeg',
+        title: 'Calendars'
+    },
+    // {
+    //     img: '',
+    //     title: 'Cards'
+    // },
+    {
+        img: 'images/Flyers.jpeg',
+        title: 'Flyers'
     },
     {
-        title: 'Flyers',
-        img: 'images/Flyers.jpeg'
+        img: 'images/printing on mugs.jpg',
+        title: 'Printing on mugs'
     },
     {
-        title: 'Printing on mugs',
-        img: ''
+        img: 'images/funeral.jpg',
+        title: 'Funeral printing'
+    },
+    // {
+    //     img: '',
+    //     title: 'General typing'
+    // },
+    // {
+    //     img: '',
+    //     title: 'Invites'
+    // },
+    {
+        img: 'images/Lamination.jpeg',
+        title: 'Laminating'
+    },
+    // {
+    //     img: '',
+    //     title: 'Letter heads'
+    // },
+    // {
+    //     img: '',
+    //     title: 'Pads'
+    // },
+    {
+        img: 'images/NCR books.jpeg',
+        title: 'NCR Books'
     },
     {
-        title: 'Funeral printing',
-        img: ''
+        img: 'images/Scan.jpeg',
+        title: 'Rubber stamps'
+    },
+    // {
+    //     img: '',
+    //     title: 'Posters'
+    // },
+    {
+        img: 'images/Book Binding.jpeg',
+        title: 'Book binding'
     },
     {
-        title: 'General typing',
-        img: ''
+        img: 'images/envelope.jpg',
+        title: 'Envelope printing'
     },
+    // {
+    //     img: '',
+    //     title: 'Scan/email'
+    // },
     {
-        title: 'Invites',
-        img: ''
+        img: 'images/stickers.jpg',
+        title: 'Stickers'
     },
+    // {
+    //     img: '',
+    //     title: 'Signage' 
+    // },
+    // {
+    //     img: '',
+    //     title: 'Tickets'
+    // },
+    // {
+    //     img: '',
+    //     title: 'T-shirt printing(only on white and must be 100% polyester)'
+    // },
     {
-        title: 'Laminating',
-        img: ''
+        img: 'images/vinyl.jpg',
+        title: 'Vinyl'
     },
+    // {
+    //     img: '',
+    //     title: 'Correx boards'
+    // },
     {
-        title: 'Letter heads',
-        img: ''
-    },
-    {
-        title: 'Pads',
-        img: ''
-    },
-    {
-        title: 'NCR Books',
-        img: ''
-    },
-    {
-        title: 'Rubber stamps',
-        img: ''
-    },
-    {
-        title: 'Posters',
-        img: ''
-    },
-    {
-        title: 'Book binding',
-        img: ''
-    },
-    {
-        title: 'Envelope printing',
-        img: ''
-    },
-    {
-        title: 'Scan/email',
-        img: 'images/Scan.jpeg'
-    },
-    {
-        title: 'Stickers',
-        img: ''
-    },
-    {
-        title: 'Signage',
-        img: '' 
-    },
-    {
-        title: 'Tickets',
-        img: ''
-    },
-    {
-        title: 'T-shirt printing(only on white and must be 100% polyester)',
-        img: ''
-    },
-    {
-        title: 'Vinyl',
-        img: '' 
-    },
-    {
-        title: 'Correx boards',
-        img: ''
+        img: 'images/A frames.jpeg',
+        title: 'A frames'
     }
 ];
 
 document.getElementById('content');
 
 services.map((x)=> {
-    let {title, img} = x;
+    let {img, title} = x;
 
     content.innerHTML += `
         <div>
+            ${img ? `<img src="${img}" alt="${title}" width="150"/>` : ''}
             <h3>${title}</h3>
-            ${img ? `<img src="${img}" alt="${title}" width="150"` : ''}
         </div>
     `;
+});
+
+document.getElementById('about-btn').addEventListener('click', ()=> {
+    document.getElementById('about').scrollIntoView({behavior: 'smooth'});
+});
+
+document.getElementById('contact-btn').addEventListener('click', ()=> {
+    document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
 });
