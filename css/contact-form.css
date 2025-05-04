@@ -17,9 +17,12 @@ header {
         font-size: 18px;
         padding: 10px;
         position: absolute;
-        left: 50px;
+        left: 25px;
         top: 90px;
         transition: all 0.5s ease;
+        @media (max-width:715px) {
+            top: 25px;
+        }
     }
     button.back-btn:hover {
         background-color: rgb(40, 159, 175);
