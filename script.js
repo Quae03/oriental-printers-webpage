@@ -118,18 +118,21 @@ const services = [
 ];
 
 document.getElementById('content');
+let id = 1;
 
-services.map((x)=> {
+services.forEach((x)=> {
     let {img, title} = x;
-    let id = 1;
 
     content.innerHTML += `
-        <div id='service${id}' class='hidden'>
-            ${img ? `<img src="${img}" alt="${title}" width="150"/>` : ''}
-            <h3>${title}</h3>
+        <div>
+        <div id='serviceDiv${id}' class='hidden'>
+            ${img ? `<img id='service${id}' src="${img}" alt="${title}" width="150"/>` : ''}
         </div>
-    `;
+        <h3>${title}</h3>
+        </div>
+        `;
     id += 1;
+    console.log(id);
 });
 
 document.getElementById('about-btn').addEventListener('click', ()=> {
@@ -150,7 +153,7 @@ document.getElementById('emailFormBtn2').addEventListener('click', ()=> {
 
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
-        console.log(entry)
+        // console.log(entry)
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {

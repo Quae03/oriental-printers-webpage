@@ -108,6 +108,8 @@ section.content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     transition: all 2s ease;
+    width: 100%;
+    overflow: hidden;
     @media (max-width:750px) {
         grid-template-columns: 1fr;
     }
@@ -119,12 +121,46 @@ section.content {
         h3 {
             text-align: center;
         }
-        img {
+        div {
             border-radius: 8px;
             box-shadow: 0px 0px 5px 1px #fff;
+        }
+        img {
+            border-radius: 8px;
             margin: 0 auto;
+            overflow: hidden;
+            display: block;
             height: 250px;
             width: 350px;
+        }
+    }
+    div#serviceDiv3 {
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
+        height: 250px;
+        width: 350px;
+        img#service3 {
+            top: -37px;
+            height: 300px;
+            position: absolute;
+        }
+        h3 {
+            display: block;
+        }
+    }
+    div#serviceDiv9 {
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+        width: 350px;
+        img#service9 {
+            top: -40px;
+            height: 350px;
+            position: absolute;
+        }
+        h3 {
+            display: block;
         }
     }
 }
@@ -155,19 +191,17 @@ section.about {
 section.contact-section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     @media (max-width:715px) {
         flex-direction: column;
         align-items: center;
     }
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
+    padding: 30px;
     div.contact-list {
         width: fit-content;
     }
     div.contact-list div {
         width: fit-content;
-        margin: 0.5rem 0;
     }
     div.contact-list div.email-address {
         margin-top: 5px;
@@ -191,7 +225,7 @@ section.contact-section {
             display: block;
         }
     }
-    .email-btn-bottom button{
+    .email-btn-bottom button {
         background-color: black;
         border: 1px solid black;
         border-radius: 20px;
@@ -199,7 +233,10 @@ section.contact-section {
         font-size: 18px;
         padding: 10px;
         height: 100px;
-        width: 250px;
+        @media (max-width:750px) {
+            margin-top: 20px;
+        }
+        width: 300px;
         transition: all 0.5s ease;
     }
     .email-btn-bottom button:hover {
@@ -212,11 +249,16 @@ section.contact-section {
 }
 footer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     img {
         border-radius: 50%;
         margin: 20px;
         width: 150px;
+    }
+    p.copyright {
+        font-size: 14px;
+        font-weight: 600;
     }
 }
 

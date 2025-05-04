@@ -83,6 +83,16 @@ form {
         cursor: pointer;
     }
 }
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 20px;
+    p.copyright {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
 
 /* JS REFERENCED CLASSES */
 
