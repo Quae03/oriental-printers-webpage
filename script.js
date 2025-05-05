@@ -21,7 +21,7 @@ const services = [
     },
     {
         img: 'images/booklets.jpeg',
-        title: 'Booklets'
+        title: 'Pads'
     },
     {
         img: 'images/Calendars.jpeg',
@@ -125,15 +125,26 @@ services.forEach((x)=> {
 
     content.innerHTML += `
         <div>
-        <div id='serviceDiv${id}' class='hidden'>
-            ${img ? `<img id='service${id}' src="${img}" alt="${title}" width="150"/>` : ''}
-        </div>
-        <h3>${title}</h3>
+            <div id='serviceDiv${id}' class='hidden'>
+                ${img ? `<img id='service${id}' src="${img}" alt="${title}" width="150"/>` : ''}
+            </div>
+            <h3>${title}</h3>
         </div>
         `;
     id += 1;
-    console.log(id);
 });
+
+let aboutText = document.getElementById('aboutText');
+
+// document.addEventListener('DOMContentLoaded', ()=>{
+//     if (window.innerWidth <= 640) {
+//         aboutText.innerText = `
+//                 `
+//     } else {
+//         `
+//                 `
+//     }
+// });
 
 document.getElementById('about-btn').addEventListener('click', ()=> {
     document.getElementById('about').scrollIntoView({behavior: 'smooth'});
@@ -164,3 +175,8 @@ const observer = new IntersectionObserver((entries)=>{
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((element)=> observer.observe(element));
+
+// Check screen size to adjust content
+document.addEventListener('resize', ()=>{
+
+});
