@@ -58,7 +58,10 @@ header {
     padding: 20px;
     img.logo {
         border-radius: 50%;
-        width: 40%;
+        width: 45%;
+        @media (max-width:640px) {
+            width: 60%;
+        }
         padding: 10px;
         padding-bottom: 0;
         animation: glow 10s ease 0s infinite normal;
@@ -118,12 +121,15 @@ section.content {
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
-        h3 {
-            text-align: center;
-        }
+        margin-bottom: 20px;
         div {
             border-radius: 8px;
             box-shadow: 0px 0px 5px 1px #fff;
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin: 0;
+            text-align: center;
         }
         img {
             border-radius: 8px;
@@ -132,6 +138,11 @@ section.content {
             display: block;
             height: 250px;
             width: 350px;
+        }
+        p {
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
         }
     }
     div#serviceDiv3 {
@@ -155,8 +166,56 @@ section.content {
         height: 250px;
         width: 350px;
         img#service9 {
-            top: -40px;
+            top: -60px;
             height: 350px;
+            position: absolute;
+        }
+        h3 {
+            display: block;
+        }
+    }
+    div#serviceDiv16 {
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+        width: 350px;
+        img#service16 {
+            top: -60px;
+            left: -120px;
+            height: 350px;
+            width: 600px;
+            position: absolute;
+        }
+        h3 {
+            display: block;
+        }
+    }
+    div#serviceDiv17 {
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+        width: 350px;
+        img#service17 {
+            top: -100px;
+            left: -20px;
+            height: 450px;
+            width: 400px;
+            position: absolute;
+        }
+        h3 {
+            display: block;
+        }
+    }
+    div#serviceDiv20 {
+        overflow: hidden;
+        position: relative;
+        height: 250px;
+        width: 350px;
+        img#service20 {
+            top: -20px;
+            left: -20px;
+            height: 300px;
+            width: 400px;
             position: absolute;
         }
         h3 {
@@ -169,6 +228,37 @@ section.adt-services {
     h2 {
         color: #000;
         margin: 0;
+    }
+    div#adtServicesContent {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        transition: all 2s ease;
+        width: 100%;
+        overflow: hidden;
+        @media (max-width:750px) {
+            grid-template-columns: 1fr;
+        }
+        div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+            h3 {
+                text-align: center;
+            }
+            div {
+                border-radius: 8px;
+                box-shadow: 0px 0px 5px 1px #fff;
+            }
+            img {
+                border-radius: 8px;
+                margin: 0 auto;
+                overflow: hidden;
+                display: block;
+                height: 250px;
+                width: 350px;
+            }
+        }
     }
 }
 section.adt-services,
@@ -193,13 +283,9 @@ section.about {
 }
 section.contact-section {
     display: flex;
-    /* justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    @media (max-width:715px) { */
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    /* } */
+    text-align: center;
     padding: 30px;
     div.contact-list {
         display: flex;

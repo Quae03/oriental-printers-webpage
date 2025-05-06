@@ -1,6 +1,8 @@
+// Assign services as objects in an array for DOM insertion
+
 const services = [
     {
-        img: 'images/andy-brown-4cOaHsfIBKQ-unsplash.jpg',
+        img: 'images/graphic design.jpeg',
         title: 'Graphic design',
     },
     {
@@ -27,42 +29,22 @@ const services = [
         img: 'images/Calendars.jpeg',
         title: 'Calendars'
     },
-    // {
-    //     img: '',
-    //     title: 'Cards'
-    // },
     {
         img: 'images/Flyers.jpeg',
         title: 'Flyers'
     },
     {
-        img: 'images/printing on mugs.jpg',
+        img: 'images/printing_on_cups.jpeg',
         title: 'Printing on mugs'
     },
     {
         img: 'images/funeral.jpg',
         title: 'Funeral printing'
     },
-    // {
-    //     img: '',
-    //     title: 'General typing'
-    // },
-    // {
-    //     img: '',
-    //     title: 'Invites'
-    // },
     {
         img: 'images/Lamination.jpeg',
         title: 'Laminating'
     },
-    // {
-    //     img: '',
-    //     title: 'Letter heads'
-    // },
-    // {
-    //     img: '',
-    //     title: 'Pads'
-    // },
     {
         img: 'images/NCR books.jpeg',
         title: 'NCR Books'
@@ -71,80 +53,57 @@ const services = [
         img: 'images/Scan.jpeg',
         title: 'Rubber stamps'
     },
-    // {
-    //     img: '',
-    //     title: 'Posters'
-    // },
     {
         img: 'images/Book Binding.jpeg',
         title: 'Book binding'
     },
     {
-        img: 'images/envelope.jpg',
+        img: 'images/envelope.jpeg',
         title: 'Envelope printing'
     },
-    // {
-    //     img: '',
-    //     title: 'Scan/email'
-    // },
     {
-        img: 'images/stickers.jpg',
+        img: 'images/stickers.jpeg',
         title: 'Stickers'
     },
-    // {
-    //     img: '',
-    //     title: 'Signage' 
-    // },
-    // {
-    //     img: '',
-    //     title: 'Tickets'
-    // },
-    // {
-    //     img: '',
-    //     title: 'T-shirt printing(only on white and must be 100% polyester)'
-    // },
     {
-        img: 'images/vinyl.jpg',
+        img: 'images/vinyl.jpeg',
         title: 'Vinyl'
     },
-    // {
-    //     img: '',
-    //     title: 'Correx boards'
-    // },
     {
         img: 'images/A frames.jpeg',
         title: 'A frames'
+    },
+    {
+        img: 'images/t_shirt_printing.jpeg',
+        title: 'T-Shirt printing',
+        desc: '(only on white and must be 100% polyester material)'
+    },
+    {
+        img: 'images/posters.jpeg',
+        title: 'Posters'
     }
 ];
 
-document.getElementById('content');
+// Generate Service content into the DOM
+
 let id = 1;
 
 services.forEach((x)=> {
-    let {img, title} = x;
+    let {img, title, desc} = x;
 
-    content.innerHTML += `
+    document.getElementById('content').innerHTML += `
         <div>
             <div id='serviceDiv${id}' class='hidden'>
                 ${img ? `<img id='service${id}' src="${img}" alt="${title}" width="150"/>` : ''}
             </div>
             <h3>${title}</h3>
+            ${desc ? `<p>${desc}</p>` : ''}
         </div>
         `;
     id += 1;
 });
 
-let aboutText = document.getElementById('aboutText');
-
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     if (window.innerWidth <= 640) {
-//         aboutText.innerText = `
-//                 `
-//     } else {
-//         `
-//                 `
-//     }
-// });
+// Buttons for redirecting to contact form & homepage 
 
 document.getElementById('about-btn').addEventListener('click', ()=> {
     document.getElementById('about').scrollIntoView({behavior: 'smooth'});
@@ -175,8 +134,3 @@ const observer = new IntersectionObserver((entries)=>{
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((element)=> observer.observe(element));
-
-// Check screen size to adjust content
-document.addEventListener('resize', ()=>{
-
-});
