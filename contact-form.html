@@ -28,6 +28,12 @@
         <p class="copyright">&#169 2025 Oriental Printers</p>
     </footer>
     <script>
+
+        // Fade in when page loads
+        window.addEventListener('DOMContentLoaded', ()=>{
+            document.body.classList.add('fade-in');
+        });
+
         const form = document.getElementById('contactForm');
         const name = document.getElementById('name');
         const email = document.getElementById('email');
@@ -81,7 +87,9 @@
         checkValidation();
 
         document.getElementById('backBtn').addEventListener('click', ()=>{
-            window.location.href = 'index.html';
+            document.body.classList.remove('fade-in');
+            document.body.classList.add('fade-out');
+            window.location.href = 'oriental-printers.html';
         });
     </script>
 </body>

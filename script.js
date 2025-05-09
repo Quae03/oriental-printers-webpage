@@ -1,3 +1,35 @@
+// Allow for smooth transitions on page load
+
+const navigateTo = (url)=>{
+    document.body.classList.add('fade-out');
+    setTimeout(()=>{
+        window.location.href = url;
+    }, 300); // match transition duration
+}
+
+// Buttons for redirecting to contact form & homepage 
+
+document.getElementById('emailFormBtn').addEventListener('click', ()=> {
+    navigateTo('contact-form.html');
+});
+
+document.getElementById('emailFormBtn2').addEventListener('click', ()=> {
+    navigateTo('contact-form.html');
+});
+
+// Fade in when page loads
+window.addEventListener('DOMContentLoaded', ()=>{
+    document.body.classList.add('fade-in');
+});
+
+document.getElementById('about-btn').addEventListener('click', ()=> {
+    document.getElementById('about').scrollIntoView({behavior: 'smooth'});
+});
+
+document.getElementById('contact-btn').addEventListener('click', ()=> {
+    document.getElementById('contact-list').scrollIntoView({behavior: 'smooth'});
+});
+
 // Assign services as objects in an array for DOM insertion
 
 const services = [
@@ -67,7 +99,7 @@ const services = [
     },
     {
         img: 'images/vinyl.jpeg',
-        title: 'Vinyl'
+        title: 'Vinyls'
     },
     {
         img: 'images/A frames.jpeg',
@@ -85,7 +117,6 @@ const services = [
 ];
 
 // Generate Service content into the DOM
-
 let id = 1;
 
 services.forEach((x)=> {
@@ -103,23 +134,15 @@ services.forEach((x)=> {
     id += 1;
 });
 
-// Buttons for redirecting to contact form & homepage 
-
-document.getElementById('about-btn').addEventListener('click', ()=> {
-    document.getElementById('about').scrollIntoView({behavior: 'smooth'});
+// Apply lazy loading to images below the fold
+document.addEventListener('DOMContentLoaded', ()=>{
+    const images = document.querySelectorAll('img:not([loaded])');
+    images.forEach(img=>{
+        img.setAttribute('loading', 'lazy');
+    });
 });
 
-document.getElementById('contact-btn').addEventListener('click', ()=> {
-    document.getElementById('contact-list').scrollIntoView({behavior: 'smooth'});
-});
-
-document.getElementById('emailFormBtn').addEventListener('click', ()=> {
-    window.location.href = 'contact-form.html';
-});
-
-document.getElementById('emailFormBtn2').addEventListener('click', ()=> {
-    window.location.href = 'contact-form.html';
-});
+// Observer code for content to fade in as we scroll into view
 
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
@@ -134,3 +157,24 @@ const observer = new IntersectionObserver((entries)=>{
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((element)=> observer.observe(element));
+
+const topBtn = document.getElementById('topBtn');
+
+topBtn.addEventListener('click', ()=>{
+    document.getElementById('header').scrollIntoView({behavior: 'smooth'});
+});
+
+// Show scroll to top button at the bottom of the page
+window.onscroll = ()=>{
+    const scrollY = window.scrollY || 
+    document.documentElement.scrollTop;
+    const triggerHeight = window.innerHeight * 10; // show after 2 fullscreens
+
+    if (scrollY > triggerHeight) {
+        topBtn.classList.remove('hide-btn');
+    } else {
+        topBtn.classList.add('hide-btn');
+    }
+};
+
+
