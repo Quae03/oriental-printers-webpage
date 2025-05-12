@@ -1,119 +1,140 @@
+@import url(styles.scss);
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-    opacity: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  opacity: 0;
 }
+
 body.fade-in {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
+
 body.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
+
 header {
-    background-color: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    img {
-        margin-bottom: 20px;
-    }
-    button.back-btn {
-        background-color: #fff;
-        border: none;
-        border-radius: 20px;
-        font-size: 18px;
-        padding: 10px;
-        position: absolute;
-        left: 25px;
-        top: 90px;
-        transition: all 0.5s ease;
-        @media (max-width:715px) {
-            top: 25px;
-        }
-    }
-    button.back-btn:hover {
-        background-color: rgb(40, 159, 175);
-        color: #fff;
-        cursor: pointer;
-    }
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+header img {
+  margin-bottom: 20px;
+}
+header button.back-btn {
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 8px;
+  position: absolute;
+  left: 25px;
+  top: 90px;
+  transition: all 0.5s ease;
+}
+@media (max-width: 715px) {
+  header button.back-btn {
+    top: 35px;
+  }
+}
+header button.back-btn:hover {
+  background-color: rgb(40, 159, 175);
+  color: #fff;
+  cursor: pointer;
+}
+
 img {
-    width: 300px;
+  width: 300px;
 }
+
 h1 {
-    color: rgb(40, 159, 175);
-    margin: 0 auto;
-    padding: 20px;
-    width: fit-content;
+  color: rgb(40, 159, 175);
+  margin: 0 auto;
+  padding: 20px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
+
 form {
-    display: flex;
-    flex-direction: column;
-    padding: 0 30px;
-    margin: 0 auto;
-    max-width: 500px;
-    > * {
-        margin-bottom: 10px;
-    }
-    input, textarea, button {
-        font-size: 1.2em;
-        padding: 10px;
-        transition: all 0.5s ease;
-    }
-    input  {
-        border: 1px solid #555;
-        border-radius: 20px;
-        height: 20px;
-    }
-    input:hover,
-    textarea:hover,
-    input:focus,
-    textarea:focus {
-        border: 1px solid rgb(40, 159, 175);
-        outline: none;
-    }
-    input#email {
-        margin-bottom: 5;
-    }
-    span#email-error {
-        display: none;
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
-    textarea {
-        border: 1px solid #555;
-    }
-    button.submit-btn:hover {
-        background-color: rgb(40, 159, 175);
-        border: 1px solid rgb(40, 159, 175);
-        color: #000;
-        cursor: pointer;
-    }
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  margin: 0 auto;
+  max-width: 500px;
+  /* remove button spinners on number inputs */
 }
+form > * {
+  margin-bottom: 10px;
+}
+form input, form textarea, form button {
+  font-size: 1.2em;
+  padding: 10px;
+  transition: all 0.5s ease;
+}
+form input {
+  border: 1px solid #555;
+  border-radius: 20px;
+  height: 20px;
+}
+form input:hover,
+form textarea:hover,
+form input:focus,
+form textarea:focus {
+  border: 1px solid rgb(40, 159, 175);
+  outline: none;
+}
+form input[type=number]::-webkit-inner-spin-button,
+form input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+form input[type=number] {
+  -webkit-appearance: none;
+          appearance: none;
+  -moz-appearance: textfield;
+}
+form input#email {
+  margin-bottom: 5;
+}
+form span.error {
+  display: none;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+form textarea {
+  border: 1px solid #555;
+}
+form button.submit-btn:hover {
+  background-color: rgb(40, 159, 175);
+  border: 1px solid rgb(40, 159, 175);
+  color: #000;
+  cursor: pointer;
+}
+
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-top: 20px;
-    p.copyright {
-        font-size: 14px;
-        font-weight: 600;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-top: 20px;
+}
+footer p.copyright {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* JS REFERENCED CLASSES */
-
 .submit-btn {
-    background-color: rgb(0, 0, 0);
-    border: 1px solid #000;
-    border-radius: 20px;
-    color: #fff;
-    padding: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid #000;
+  border-radius: 20px;
+  color: #fff;
+  padding: 10px;
 }
+
 .invalid-submit-btn {
-    background-color: #777;
-    border: 1px solid #777;
-    border-radius: 20px;
-}
+  background-color: #777;
+  border: 1px solid #777;
+  border-radius: 20px;
+}/*# sourceMappingURL=contact-form.css.map */

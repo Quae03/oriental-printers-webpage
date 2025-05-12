@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta>
     <title>Oriental Printers</title>
     <!-- <link rel="icon" href="data:,"> -->
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="icon" href="orientalPrintersLogo.png" type="image/x-icon">
+    <!-- Preload logo -->
+    <link rel="preload" href="/orientalPrintersLogo3.png" as="image">
 </head>
 <body>
-    <header>
-        <img class="logo" src="orientalPrintersLogo3.png" alt="logo">
+    <header id="header">
+        <img class="logo" src="/orientalPrintersLogo3.png" alt="logo">
         <h2 class="slogan">YOUR CONCEPT OUR CREATION</h2>
     </header>
+
     <nav>
         <div id="about-btn" class="about-btn">About</div>
         <div id="contact-btn" class="contact-btn">Contact Us</div>
@@ -77,21 +81,29 @@
             </p>
         </section>
     </main>
+    
     <section class="contact-section">
         <div id="contact-list" class="contact-list">
             <div class="phone-number"><i class="bi-telephone-fill"></i><a href="tel:+785479880">078 547 9880</a></div>
             <div class="email-address"><i class="bi-envelope-fill"></i><a href="mailto:orientalprinters1@gmail.com?subject=Design%20Inquiry">orientalprinters1@gmail.com</a></div>
-            <div class="address">8 Sunflower Road <br> White City <br> Port Shepstone</div>
+            <div class="address"><i class="bi bi-house-door-fill"></i>8 Sunflower Road <br> White City <br> Port Shepstone</div>
             <div>Open:<br>Monday - Friday<br>8am - 5pm</div>
         </div>
+
+        <!-- Google Maps -->
+        <div class="map" style="text-decoration:none; overflow:hidden;"><div id="embed-map-display" style="height:100%; width:100%; max-width:100%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3429.8888791859113!2d30.43323541112703!3d-30.721524162899033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e58a1000c266765%3A0xee10536f711761af!2sOriental%20Printers!5e0!3m2!1sen!2sza!4v1746786588623!5m2!1sen!2sza" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><a class="code-for-google-map" href="https://www.bootstrapskins.com/themes" id="authorize-maps-data">premium bootstrap themes</a><style>#embed-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>
         <div id="emailFormBtn2" class="email-btn-bottom">
             <button>Inquire via email</button>
         </div>
     </section>
+    
     <footer>
         <img src="orientalPrintersLogo.png" alt="logo">
         <p class="copyright">&#169 2025 Oriental Printers</p>
     </footer>
+
+    <!-- Scroll to top button -->
+    <div id="topBtn" class="top-btn hide-btn">&#8593</div>
 </body>
 <script defer src="script.js"></script>
 </html>
