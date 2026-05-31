@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oriental Printers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="orientalPrintersLogo.png" type="image/x-icon">
+    <link rel="preload" href="/orientalPrintersLogo3.png" as="image">
+    <style>
+
+        /* ── KEYFRAMES ── */
+        @keyframes glow {
+            0%   { box-shadow: 0px 0px 5px 1px #009FC9; }
+            25%  { box-shadow: 0px 0px 5px 1px #fff; }
+            75%  { box-shadow: 0px 0px 5px 1px #2a045c; }
+            100% { box-shadow: 0px 0px 5px 1px #009FC9; }
+        }
+        @keyframes glow-btn {
+            0%   { box-shadow: 0px 0px 8px 2px #009FC9; }
+            50%  { box-shadow: 0px 0px 8px 2px #2a045c; }
+            100% { box-shadow: 0px 0px 8px 2px #009FC9; }
+        }
+        @keyframes ticker {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes slideDown {
+            from { max-height: 0; opacity: 0; }
+            to   { max-height: 500px; opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { max-height: 500px; opacity: 1; }
+            to   { max-height: 0; opacity: 0; }
+        }
+        @keyframes pulse-cta {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,159,201,0.4); }
+            50%       { box-shadow: 0 0 0 12px rgba(0,159,201,0); }
+        }
+
+        /* ── RESET ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cyan:   #009FC9;
+            --purple: #2a045c;
+            --black:  #000;
+            --dark:   #0a0a0a;
+            --grey:   #111;
+            --grey2:  #1a1a1a;
+            --white:  #fff;
+            --muted:  #888;
+            --border: #222;
+            --font:   Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--black);
+            color: var(--white);
+            margin: 0;
+            opacity: 0;
+        }
+        body.fade-in  { opacity: 1; transition: opacity 0.4s ease-in-out; }
+        body.fade-out { opacity: 0; transition: opacity 0.3s ease-in-out; }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px 16px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        header img.logo {
+            border-radius: 50%;
+            width: 45%;
+            padding: 10px 10px 0;
+            animation: glow 10s ease infinite;
+        }
+        @media (max-width: 640px) { header img.logo { width: 65%; } }
+        header h2.slogan {
+            margin: 20px 10px 8px;
+            text-align: center;
+            font-size: clamp(14px, 3vw, 22px);
+            color: var(--white);
+            letter-spacing: 0.08em;
+        }
+
+        /* ── NAV ── */
+        nav {
+            font-size: clamp(13px, 2vw, 18px);
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+        nav div {
+            background-color: #fff;
+            border-top: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 18px 10px;
+            text-align: center;
+            width: 100%;
+            transition: all 0.4s ease;
+            font-family: var(--font);
+        }
+        nav div:hover {
+            color: var(--cyan);
+            border-top: 2px solid var(--cyan);
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        /* ── TICKER ── */
+        .ticker-wrap {
+            width: 100%;
+            background: var(--cyan);
+            overflow: hidden;
+            padding: 9px 0;
+            border-bottom: 1px solid #000;
+        }
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker 30s linear infinite;
+        }
+        .ticker-item {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--black);
+            white-space: nowrap;
+            padding: 0 36px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .ticker-item::before { content: "✦  "; }
+
+        /* ── HERO ── */
+        .hero {
+            background: radial-gradient(ellipse at 60% 40%, #001a26 0%, #000 65%);
+            padding: 100px 60px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse at right, rgba(0,159,201,0.06), transparent 70%);
+            pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+            .hero-visual { order: -1; }
+        }
+        .hero-text { animation: fadeUp 0.7s ease both 0.2s; }
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 36px; height: 2px;
+            background: var(--cyan);
+        }
+        .hero-eyebrow span {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            font-weight: 700;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 68px);
+            font-weight: 700;
+            line-height: 1.08;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--cyan); }
+        .hero-sub {
+            font-size: clamp(14px, 1.6vw, 17px);
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--cyan);
+            border: 2px solid var(--cyan);
+            color: var(--black);
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 14px 32px;
+            cursor: pointer;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: pulse-cta 3s ease infinite;
+        }
+        .btn-primary:hover { background: transparent; color: var(--cyan); animation: glow-btn 3s ease infinite; }
+        .btn-ghost {
+            background: transparent;
+            border: 2px solid #444;
+            color: var(--white);
+            font-family: var(--font);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 14px 32px;
+            cursor: pointer;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+        /* Hero visual - stat cards */
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            animation: fadeUp 0.7s ease both 0.4s;
+        }
+        .stat-card {
+            background: var(--grey);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .stat-card:hover { border-color: var(--cyan); }
+        .stat-card.featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #001a26, #000d1a);
+            border-color: rgba(0,159,201,0.3);
+        }
+        .stat-num {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--cyan);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+        .stat-card.featured .stat-num { font-size: 32px; }
+        .stat-card.featured .stat-label { font-size: 14px; color: #aaa; }
+
+        /* ── SECTION SHARED ── */
+        .section-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .section-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px; height: 2px;
+            background: var(--cyan);
+        }
+        .section-eyebrow span {
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            font-weight: 700;
+        }
+        .section-big-heading {
+            font-size: clamp(32px, 4.5vw, 62px);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--white);
+        }
+        .section-big-heading span { color: var(--cyan); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── SPLIT SECTION: text left, visual right ── */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .split.reverse { direction: rtl; }
+        .split.reverse > * { direction: ltr; }
+        @media (max-width: 768px) {
+            .split, .split.reverse { grid-template-columns: 1fr; direction: ltr; }
+        }
+        .split-text {
+            padding: 80px 64px;
+            background: var(--dark);
+        }
+        .split-text p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.9;
+            margin: 20px 0 32px;
+            font-weight: 400;
+        }
+        .split-text ul {
+            list-style: none;
+            margin-bottom: 36px;
+        }
+        .split-text ul li {
+            font-size: 14px;
+            color: #bbb;
+            padding: 9px 0;
+            border-bottom: 1px solid #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .split-text ul li i { color: var(--cyan); flex-shrink: 0; }
+        @media (max-width: 768px) { .split-text { padding: 48px 24px; } }
+
+        /* Split visual panel */
+        .split-visual {
+            background: var(--grey);
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Decorative CSS imagery — printing press themed */
+        .vis-print {
+            width: 80%;
+            max-width: 340px;
+            aspect-ratio: 1;
+            border: 2px solid rgba(0,159,201,0.2);
+            border-radius: 8px;
+            background: linear-gradient(135deg, #0a0a0a, #001a26);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            animation: glow 10s ease infinite;
+            padding: 32px;
+        }
+        .vis-print i { font-size: 64px; color: var(--cyan); opacity: 0.8; }
+        .vis-print-label {
+            font-size: 13px;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .vis-strips {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .vis-strip {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,159,201,0.15), transparent);
+            width: 100%;
+        }
+
+        /* ── BRAND STATEMENT (Brand Candy big text style) ── */
+        .brand-statement {
+            background: var(--black);
+            padding: 100px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .brand-statement .we-tag {
+            font-size: clamp(14px, 2vw, 18px);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .brand-statement .big-line {
+            font-size: clamp(48px, 8vw, 110px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            display: block;
+            color: var(--white);
+        }
+        .brand-statement .big-line.cyan { color: var(--cyan); }
+        .brand-statement .big-line.outline {
+            -webkit-text-stroke: 2px var(--white);
+            color: transparent;
+        }
+        .brand-statement .big-line.outline-cyan {
+            -webkit-text-stroke: 2px var(--cyan);
+            color: transparent;
+        }
+        .brand-statement p {
+            font-size: clamp(14px, 1.8vw, 17px);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 32px auto 0;
+            line-height: 1.8;
+        }
+        @media (max-width: 600px) { .brand-statement { padding: 64px 24px; } }
+
+        /* ── SERVICE CARDS ── */
+        .services-section {
+            background: var(--dark);
+            padding: 80px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 600px) { .services-section { padding: 60px 20px; } }
+        .services-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+        .service-card {
+            background: var(--grey);
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: background 0.3s, border-color 0.3s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--cyan);
+            transition: width 0.4s ease;
+        }
+        .service-card:hover { background: #0d0d0d; }
+        .service-card:hover::before { width: 100%; }
+        .service-card i { font-size: 28px; color: var(--cyan); }
+        .service-card h3 { font-size: 16px; color: var(--white); font-weight: 700; }
+        .service-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+        /* ── FULL-WIDTH CTA STRIP ── */
+        .cta-strip {
+            background: linear-gradient(135deg, #001a26 0%, #0a0020 100%);
+            border-top: 1px solid rgba(0,159,201,0.2);
+            border-bottom: 1px solid rgba(0,159,201,0.2);
+            padding: 80px 60px;
+            text-align: center;
+        }
+        @media (max-width: 600px) { .cta-strip { padding: 60px 24px; } }
+        .cta-strip h2 {
+            font-size: clamp(28px, 4vw, 52px);
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .cta-strip h2 span { color: var(--cyan); }
+        .cta-strip p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* ── COLLAPSIBLE SERVICES DRAWER ── */
+        .drawer-section {
+            background: var(--black);
+            border-bottom: 1px solid var(--border);
+        }
+        .drawer-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 60px;
+            background: var(--grey);
+            border: none;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .drawer-trigger:hover { background: #1a1a1a; }
+        .drawer-trigger .arrow {
+            font-size: 20px;
+            color: var(--cyan);
+            transition: transform 0.4s ease;
+        }
+        .drawer-trigger.open .arrow { transform: rotate(180deg); }
+        @media (max-width: 600px) { .drawer-trigger { padding: 22px 20px; font-size: 13px; } }
+
+        .drawer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .drawer-content.open {
+            max-height: 600px;
+            opacity: 1;
+        }
+        .drawer-inner {
+            padding: 32px 60px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        @media (max-width: 600px) { .drawer-inner { padding: 24px 20px 32px; } }
+        .service-pill {
+            background: var(--grey);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: #bbb;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .service-pill:hover { border-color: var(--cyan); color: var(--cyan); }
+
+        /* ── ABOUT SECTION ── */
+        .about-section {
+            background: var(--dark);
+            padding: 80px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        @media (max-width: 600px) { .about-section { padding: 60px 24px; } }
+        .about-section p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.9;
+            max-width: 860px;
+            margin-top: 20px;
+        }
+        .about-section p a { color: var(--cyan); text-decoration: none; }
+        .about-section p a:hover { text-decoration: underline; }
+        .about-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .about-stat-num {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--cyan);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .about-stat-label { font-size: 13px; color: var(--muted); }
+/* ── WHATSAPP CTA ── */
+      .wa-section {
+          background: radial-gradient(ellipse at center, #001a0d 0%, #000 70%);
+          text-align: center;
+          border-bottom: 1px solid #1a3320;
+      }
+      .wa-section h2 { font-size: 28px; color: var(--white); margin-bottom: 12px; }
+      .wa-section h2 span { color: #25d366; }
+      .wa-section p { color: #888; font-size: 15px; max-width: 500px; margin: 0 auto 20px; line-height: 1.7; }
+      .wa-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          background: #25d366;
+          color: var(--black);
+          text-decoration: none;
+          font-family: var(--font);
+          font-size: 17px;
+          font-weight: 700;
+          padding: 18px 44px;
+          border-radius: 50px;
+          animation: pulse-wa 2.5s ease infinite;
+          transition: background 0.3s;
+          letter-spacing: 0.02em;
+          margin-bottom: 10px;
+      }
+      .wa-btn:hover { background: #1ebe5d; }
+      .wa-btn i { font-size: 26px; }
+      .wa-note { margin-top: 20px; font-size: 12px; color: #444; }
+        /* ── CONTACT SECTION ── */
+        .contact-section {
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 600;
+            gap: 8px;
+            margin-bottom: 36px;
+        }
+        .contact-list div { font-size: 15px; }
+        .contact-list a { color: var(--black); text-decoration: none; }
+        .contact-list i {
+            background: var(--cyan);
+            border-radius: 50%;
+            padding: 2px 4px;
+            margin-right: 6px;
+            font-size: 13px;
+        }
+        .contact-list .phone-number:hover,
+        .contact-list .email-address:hover { text-decoration: underline; }
+        .map {
+            border-radius: 10px;
+            height: 300px;
+            width: 70%;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        .map iframe { width: 100%; height: 100%; border: 0; }
+        @media (max-width: 715px) { .map { width: 95%; } }
+        .email-btn-bottom button {
+            background: var(--black);
+            border: 1px solid var(--black);
+            border-radius: 20px;
+            color: var(--white);
+            font-size: 16px;
+            padding: 10px;
+            height: 90px;
+            width: 260px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-weight: 600;
+            transition: all 0.4s ease;
+        }
+        .email-btn-bottom button:hover {
+            background: var(--white);
+            color: var(--black);
+            animation: glow-btn 5s ease infinite;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 20px 16px;
+            border-top: 1px solid var(--border);
+        }
+        footer img {
+            border-radius: 50%;
+            margin: 16px;
+            width: 120px;
+        }
+        footer p.copyright { font-size: 13px; font-weight: 600; color: #444; }
+
+        /* ── SCROLL TO TOP ── */
+        .top-btn {
+            background: var(--black);
+            color: var(--white);
+            right: 0; bottom: 200px;
+            opacity: 40%;
+            padding: 10px;
+            position: fixed;
+            text-align: center;
+            width: 22px;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: opacity 0.2s;
+        }
+        .top-btn:hover { opacity: 100%; }
+        .hide-btn { display: none; }
+
+        /* ── SCROLL REVEAL ── */
+        .hidden-el {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .hidden-el.show { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="header">
+        <img class="logo" src="/orientalPrintersLogo3.png" alt="Oriental Printers Logo">
+        <h2 class="slogan">YOUR CONCEPT OUR CREATION</h2>
+    </header>
+
+    <!-- NAV -->
+    <nav>
+        <div id="about-btn">About</div>
+        <div id="contact-btn">Contact Us</div>
+        <div id="emailFormBtn">Email Us</div>
+        <div id="websiteCreationBtn">Web Services</div>
+    </nav>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+        <div class="ticker-track">
+            <span class="ticker-item">Banners & Signage</span>
+            <span class="ticker-item">Business Cards</span>
+            <span class="ticker-item">Graphic Design</span>
+            <span class="ticker-item">Branding</span>
+            <span class="ticker-item">Flyers & Posters</span>
+            <span class="ticker-item">T-Shirt Printing</span>
+            <span class="ticker-item">NCR Books</span>
+            <span class="ticker-item">Rubber Stamps</span>
+            <span class="ticker-item">Funeral Printing</span>
+            <span class="ticker-item">Laminating</span>
+            <span class="ticker-item">Booklets & Calendars</span>
+            <span class="ticker-item">Stickers & Vinyl</span>
+            <!-- duplicate for seamless loop -->
+            <span class="ticker-item">Banners & Signage</span>
+            <span class="ticker-item">Business Cards</span>
+            <span class="ticker-item">Graphic Design</span>
+            <span class="ticker-item">Branding</span>
+            <span class="ticker-item">Flyers & Posters</span>
+            <span class="ticker-item">T-Shirt Printing</span>
+            <span class="ticker-item">NCR Books</span>
+            <span class="ticker-item">Rubber Stamps</span>
+            <span class="ticker-item">Funeral Printing</span>
+            <span class="ticker-item">Laminating</span>
+            <span class="ticker-item">Booklets & Calendars</span>
+            <span class="ticker-item">Stickers & Vinyl</span>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-eyebrow"><span>Est. 1976 · Port Shepstone, KZN</span></div>
+            <h1>We Print<br>Your <span>Vision.</span><br>Precisely.</h1>
+            <p class="hero-sub">
+                From a single business card to a full branding suite — Oriental Printers has been turning ideas into beautifully printed reality for nearly five decades. Quality, affordability, and a personal touch, every time.
+            </p>
+            <div class="hero-btns">
+                <a href="#services" class="btn-primary">Explore Services</a>
+                <a href="#contact" class="btn-ghost">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="stat-card featured">
+                <div class="stat-num">48+</div>
+                <div class="stat-label">Years serving KwaZulu-Natal businesses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">20+</div>
+                <div class="stat-label">Print &amp; design services</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Family owned &amp; operated</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND STATEMENT (Brand Candy style big text) -->
+    <div class="brand-statement">
+        <span class="we-tag">We are Oriental Printers — we</span>
+        <span class="big-line">PRINT</span>
+        <span class="big-line outline">DESIGN</span>
+        <span class="big-line cyan">BRAND</span>
+        <p>More than ink on paper. We bring your concept to life with precision, passion and the kind of personal service that only a family business can offer.</p>
+    </div>
+
+    <!-- SPLIT: Print Services -->
+    <div class="split hidden-el" id="services">
+        <div class="split-text">
+            <div class="section-eyebrow"><span>Print Services</span></div>
+            <h2 class="section-big-heading">Everything<br>You Need,<br><span>Printed Right.</span></h2>
+            <p>
+                Whether you need a single rubber stamp or a thousand booklets, we handle every print job with the same level of care. Digital and lithographic printing for any format, any quantity, any deadline.
+            </p>
+            <ul>
+                <li><i class="bi bi-check-circle-fill"></i>Banners, Posters &amp; Signage</li>
+                <li><i class="bi bi-check-circle-fill"></i>Business Cards &amp; Letterheads</li>
+                <li><i class="bi bi-check-circle-fill"></i>Booklets, Pads &amp; NCR Books</li>
+                <li><i class="bi bi-check-circle-fill"></i>Flyers, Invites &amp; Certificates</li>
+                <li><i class="bi bi-check-circle-fill"></i>Funeral Programmes</li>
+                <li><i class="bi bi-check-circle-fill"></i>Stickers, Vinyl &amp; Correx Boards</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Request a Quote</a>
+        </div>
+        <div class="split-visual">
+            <div class="vis-strips">
+                <div class="vis-strip" style="top:20%"></div>
+                <div class="vis-strip" style="top:40%"></div>
+                <div class="vis-strip" style="top:60%"></div>
+                <div class="vis-strip" style="top:80%"></div>
+            </div>
+            <div class="vis-print">
+                <i class="bi bi-printer-fill"></i>
+                <span class="vis-print-label">Digital &amp; Lithographic<br>Printing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPLIT: Design & Branding (reversed) -->
+    <div class="split reverse hidden-el">
+        <div class="split-text">
+            <div class="section-eyebrow"><span>Design &amp; Branding</span></div>
+            <h2 class="section-big-heading">Your Brand,<br><span>Made to</span><br>Impress.</h2>
+            <p>
+                A great print job starts with great design. Our in-house graphic design team creates visuals that command attention — from your logo to your full brand identity. We handle the creative so you can focus on running your business.
+            </p>
+            <ul>
+                <li><i class="bi bi-check-circle-fill"></i>Logo &amp; Brand Identity Design</li>
+                <li><i class="bi bi-check-circle-fill"></i>Marketing Materials &amp; Layouts</li>
+                <li><i class="bi bi-check-circle-fill"></i>T-Shirt Printing (100% Polyester)</li>
+                <li><i class="bi bi-check-circle-fill"></i>Rubber Stamps &amp; Custom Signage</li>
+                <li><i class="bi bi-check-circle-fill"></i>Calendars &amp; Promotional Items</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Start Your Design</a>
+        </div>
+        <div class="split-visual" style="background: linear-gradient(135deg, #0a0014, #001a0a);">
+            <div class="vis-strips">
+                <div class="vis-strip" style="top:25%"></div>
+                <div class="vis-strip" style="top:50%"></div>
+                <div class="vis-strip" style="top:75%"></div>
+            </div>
+            <div class="vis-print" style="border-color: rgba(42,4,92,0.5);">
+                <i class="bi bi-palette-fill"></i>
+                <span class="vis-print-label">Graphic Design<br>&amp; Branding</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULL WIDTH CTA STRIP -->
+    <div class="cta-strip hidden-el">
+        <h2>Nearly 50 Years of<br><span>Trusted Quality.</span></h2>
+        <p>From walk-in orders to bulk corporate print runs — every client gets the same dedication. Come in, call, or email and let's make something great.</p>
+        <div class="cta-btns">
+            <a href="#contact" class="btn-primary">Get a Quote Today</a>
+            <a href="contact-form.html" class="btn-ghost">Send an Email</a>
+        </div>
+    </div>
+
+    <!-- SERVICE CARDS GRID -->
+    <section class="services-section hidden-el">
+        <div class="services-header">
+            <div>
+                <div class="section-eyebrow"><span>What We Offer</span></div>
+                <h2 class="section-big-heading" style="font-size: clamp(26px,3.5vw,44px);">All Our <span>Services</span></h2>
+            </div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="bi bi-card-image"></i>
+                <h3>Banners &amp; Signage</h3>
+                <p>Eye-catching banners and signage that put your brand in the spotlight — indoor and outdoor.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-credit-card-2-front-fill"></i>
+                <h3>Business Cards</h3>
+                <p>Leave a lasting impression. Professional cards that reflect your brand with quality finish.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-book-fill"></i>
+                <h3>Booklets &amp; Pads</h3>
+                <p>Perfectly bound booklets, notepads and NCR duplicate/triplicate books for your business.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-file-earmark-text-fill"></i>
+                <h3>Flyers &amp; Posters</h3>
+                <p>High-impact flyers and posters designed to grab attention and drive customers to act.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-brush-fill"></i>
+                <h3>Graphic Design</h3>
+                <p>From concept to finished artwork — logos, layouts and full brand identity design.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-heart-fill"></i>
+                <h3>Funeral Printing</h3>
+                <p>Handled with care and urgency. Programmes, booklets and memorial prints done respectfully and fast.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-tag-fill"></i>
+                <h3>Stickers &amp; Vinyl</h3>
+                <p>Custom cut stickers and vinyl graphics for vehicles, windows, walls and products.</p>
+            </div>
+            <div class="service-card">
+                <i class="bi bi-award-fill"></i>
+                <h3>Certificates &amp; Invites</h3>
+                <p>Beautifully designed certificates, invitations, tickets and event programmes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLAPSIBLE DRAWER: Additional services -->
+    <div class="drawer-section hidden-el">
+        <button class="drawer-trigger" id="drawerBtn">
+            <span>&#43; View All Additional Services</span>
+            <span class="arrow">&#8964;</span>
+        </button>
+        <div class="drawer-content" id="drawerContent">
+            <div class="drawer-inner">
+                <span class="service-pill">T-Shirt Printing</span>
+                <span class="service-pill">Rubber Stamps</span>
+                <span class="service-pill">Calendars</span>
+                <span class="service-pill">Laminating</span>
+                <span class="service-pill">Correx Boards</span>
+                <span class="service-pill">Letterheads</span>
+                <span class="service-pill">Scanning &amp; Email</span>
+                <span class="service-pill">Tickets</span>
+                <span class="service-pill">General Typing</span>
+                <span class="service-pill">Branding</span>
+                <span class="service-pill">NCR Books</span>
+                <span class="service-pill">Pads</span>
+                <span class="service-pill">Digital Printing</span>
+                <span class="service-pill">Lithographic Printing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about-section hidden-el" id="about">
+        <div class="section-eyebrow"><span>About Us</span></div>
+        <h2 class="section-big-heading" style="font-size: clamp(26px,3.5vw,44px);">A Family Business<br><span>Built on Trust.</span></h2>
+        <p>
+            Established in 1976, Oriental Printers is a proudly family-owned printing business rooted in the heart of White City, Port Shepstone.
+            With nearly five decades of experience, we have grown into one of the most trusted names in printing and branding across KwaZulu-Natal,
+            offering a blend of traditional values and modern solutions.
+            <br><br>
+            At Oriental Printers, we believe that printing is more than ink on paper — it's about making your vision come to life.
+            Whether it's a banner that commands attention, a business card that leaves a lasting impression,
+            or a booklet that tells your story with clarity and style, we bring our passion, expertise, and dedication to every project.
+            Our motto, <strong style="color:#fff;">"Your Concept, Our Creation,"</strong> is more than just a slogan — it's the philosophy that drives everything we do.
+            <br><br>
+            Conveniently located at <strong style="color:#fff;">8 Sunflower Road, White City, Port Shepstone</strong>.
+            Contact us on <a href="tel:+27785479880">078 547 9880</a> or <a href="mailto:orientalprinters1@gmail.com">orientalprinters1@gmail.com</a>.
+        </p>
+        <div class="about-stats">
+            <div>
+                <div class="about-stat-num">1976</div>
+                <div class="about-stat-label">Year established</div>
+            </div>
+            <div>
+                <div class="about-stat-num">48+</div>
+                <div class="about-stat-label">Years in business</div>
+            </div>
+            <div>
+                <div class="about-stat-num">20+</div>
+                <div class="about-stat-label">Services offered</div>
+            </div>
+            <div>
+                <div class="about-stat-num">KZN</div>
+                <div class="about-stat-label">Proudly local</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="contact-list">
+            <div class="phone-number"><i class="bi-telephone-fill"></i><a href="tel:+27785479880" style="color:inherit;">078 547 9880</a></div>
+            <div class="email-address"><i class="bi-envelope-fill"></i><a href="mailto:orientalprinters1@gmail.com?subject=Design%20Inquiry" style="color:inherit;">orientalprinters1@gmail.com</a></div>
+            <div class="address"><i class="bi bi-house-door-fill"></i>8 Sunflower Road, White City, Port Shepstone</div>
+            <div>Mon – Fri &nbsp;|&nbsp; 8am – 5pm</div>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3429.8888791859113!2d30.43323541112703!3d-30.721524162899033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e58a1000c266765%3A0xee10536f711761af!2sOriental%20Printers!5e0!3m2!1sen!2sza!4v1746786588623!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <section class="wa-section" id="whatsapp">
+            <p>Chat to us on WhatsApp right now. Tell us about your business and we'll put together a quote — usually within 24 hours.</p>
+            <a class="wa-btn" href="https://wa.me/27785479880?text=Hi%2C%20I%27m%20interested%20in%20getting%20a%20website%20built.%20Can%20you%20help?" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp"></i>
+                Chat on WhatsApp
+            </a>
+            <p class="wa-note">078 547 9880 · Typically replies within a few hours</p>
+        </section>
+        <div class="email-btn-bottom" id="emailFormBtn2">
+            <button>Inquire via email</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="orientalPrintersLogo.png" alt="Oriental Printers Logo">
+        <p class="copyright">&#169; 2025 Oriental Printers</p>
+    </footer>
+
+    <!-- Scroll to top -->
+    <div id="topBtn" class="top-btn hide-btn">&#8593;</div>
+
+    <script>
+        // ── FADE IN ──
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-in');
+        });
+
+        // ── NAV ──
+        document.getElementById('about-btn').addEventListener('click', () => {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('contact-btn').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('emailFormBtn').addEventListener('click', () => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => { window.location.href = 'contact-form.html'; }, 300);
+        });
+        document.getElementById('emailFormBtn2').addEventListener('click', () => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => { window.location.href = 'contact-form.html'; }, 300);
+        });
+        document.getElementById('websiteCreationBtn').addEventListener('click', () => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => { window.location.href = 'website-creation.html'; }, 300);
+        });
+
+        // ── SCROLL TO TOP ──
+        const topBtn = document.getElementById('topBtn');
+        window.addEventListener('scroll', () => {
+            topBtn.classList.toggle('hide-btn', window.scrollY < 300);
+        });
+        topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ── COLLAPSIBLE DRAWER ──
+        const drawerBtn = document.getElementById('drawerBtn');
+        const drawerContent = document.getElementById('drawerContent');
+        drawerBtn.addEventListener('click', () => {
+            const isOpen = drawerContent.classList.toggle('open');
+            drawerBtn.classList.toggle('open', isOpen);
+            drawerBtn.querySelector('span:first-child').textContent = isOpen
+                ? '− Hide Additional Services'
+                : '+ View All Additional Services';
+        });
+
+        // ── SCROLL REVEAL ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.hidden-el').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
